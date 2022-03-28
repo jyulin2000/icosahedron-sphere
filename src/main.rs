@@ -51,7 +51,7 @@ fn main() {
     
     let display = glium::Display::new(wb, cb, &event_loop).unwrap();
 
-    let sphere: ico_sphere::IcoSphere = ico_sphere::IcoSphere::new(0.7, 3);
+    let sphere: ico_sphere::IcoSphere = ico_sphere::IcoSphere::new(0.8, 4);
     //println!("{:?}", sphere.vertices());
 
     let vertex_buffer = glium::VertexBuffer::new(&display, &sphere.vertices).unwrap();
@@ -115,33 +115,32 @@ fn main() {
     // }
     //let mut stored_frames: Vec<gif::Frame> = Vec::new();
     
-    let mut callback = |ev, _, control_floow| {
-        println!("{:?}", ev);
-        let time_s: f32 = seconds();
-        //println!("{}", time_s);
-        let uniforms = glium::uniform! { time_s: time_s };
+    // let mut callback = |ev, _, control_floow| {
+    //     println!("{:?}", ev);
+    //     let time_s: f32 = seconds();
+    //     //println!("{}", time_s);
+    //     let uniforms = glium::uniform! { time_s: time_s };
 
-        let mut target = display.draw();
-        target.clear_color(0.0, 0.0, 0.0, 1.0);
-        target.draw(
-            &vertex_buffer, 
-            &indices, 
-            &program, 
-            &uniforms,
-            &params
-        ).unwrap();
+    //     let mut target = display.draw();
+    //     target.clear_color(0.0, 0.0, 0.0, 1.0);
+    //     target.draw(
+    //         &vertex_buffer, 
+    //         &indices, 
+    //         &program, 
+    //         &uniforms,
+    //         &params
+    //     ).unwrap();
         
-        target.finish().unwrap();
-    };
+    //     target.finish().unwrap();
+    // };
 
-    for i in 0..n_frames {
-        let mut control_flow = ControlFlow::default();
-        event_loop.drain_events(&mut callback, &mut control_flow);
-        //let frame = get_gif_frame(&display);
-        //encoder.write_frame(&frame).unwrap();
-    }
+    // for i in 0..n_frames {
+    //     let mut control_flow = ControlFlow::default();
+    //     event_loop.drain_events(&mut callback, &mut control_flow);
+    //     //let frame = get_gif_frame(&display);
+    //     //encoder.write_frame(&frame).unwrap();
+    // }
 
-    /*
     event_loop.run(move |ev, _, control_flow| {
         println!("{:?}", ev);
         let time_s: f32 = seconds();
@@ -186,7 +185,7 @@ fn main() {
         //  }
         count += 1;
     });
-    */
+
     println!("Hi");
 
 }
